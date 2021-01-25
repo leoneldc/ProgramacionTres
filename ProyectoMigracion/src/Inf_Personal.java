@@ -1,5 +1,4 @@
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,7 +10,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author leone
@@ -299,54 +297,56 @@ public class Inf_Personal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-    String nDepartamento="", nOcupacion="";
-    String tTramite="", tPasaporte="", tCaso="";
-            tTramite=nomTramite.getSelectedItem().toString();
-            tPasaporte=nomPasaporte.getSelectedItem().toString();
-            tCaso=nomCaso.getSelectedItem().toString();
-            nDepartamento=nomDepartamento.getSelectedItem().toString();    
-            nOcupacion=nomOcupacion.getSelectedItem().toString();
-            
-        if (nomMunicipio.getText().length()!=0&&nomDireccion.getText().length()!=0&&numCelular.getText().length()!=0&&numTelefono.getText().length()!=0
-           &&nomCorreo.getText().length()!=0&&nomConfirmacionCorreo.getText().length()!=0&&numAltura.getText().length()!=0&&nomTez.getText().length()!=0
-           &&nomOjos.getText().length()!=0&&nDepartamento!="Seleccionar..."&&nOcupacion!="Seleccionar..."&&tTramite!="Seleccionar..."
-           &&tPasaporte!="Seleccionar..."&&tCaso!="Seleccionar...") {
+        String nDepartamento = "", nOcupacion = "";
+        String tTramite = "", tPasaporte = "", tCaso = "";
+        tTramite = nomTramite.getSelectedItem().toString();
+        tPasaporte = nomPasaporte.getSelectedItem().toString();
+        tCaso = nomCaso.getSelectedItem().toString();
+        nDepartamento = nomDepartamento.getSelectedItem().toString();
+        nOcupacion = nomOcupacion.getSelectedItem().toString();
+
+        if (nomMunicipio.getText().length() != 0 && nomDireccion.getText().length() != 0 && numCelular.getText().length() != 0 && numTelefono.getText().length() != 0
+                && nomCorreo.getText().length() != 0 && nomConfirmacionCorreo.getText().length() != 0 && numAltura.getText().length() != 0 && nomTez.getText().length() != 0
+                && nomOjos.getText().length() != 0 && nDepartamento != "Seleccionar..." && nOcupacion != "Seleccionar..." && tTramite != "Seleccionar..."
+                && tPasaporte != "Seleccionar..." && tCaso != "Seleccionar...") {
             if (nomCorreo.getText().equals(nomConfirmacionCorreo.getText())) {
-             try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyectomigracion", "root", "");
-            PreparedStatement pst = cn.prepareStatement("insert into datospersonales values(?,?,?,?,?,?,?,?,?,?,?,?)"); 
-            pst.setString(1, noIdentificacion.getText().trim());
-            pst.setString(2, nomCorreo.getText().trim());
-            pst.setString(3, numTelefono.getText().trim());
-            pst.setString(4, numCelular.getText().trim());
-            pst.setString(5, nOcupacion.trim());
-            pst.setString(6, nomPais.getText().trim());
-            pst.setString(7, nDepartamento.trim());
-            pst.setString(8, nomMunicipio.getText().trim());
-            pst.setString(9, nomDireccion.getText().trim());
-            pst.setString(10, numAltura.getText().trim());
-            pst.setString(11, nomTez.getText().trim());
-            pst.setString(12, nomOjos.getText().trim());
-            pst.executeUpdate();
-                }catch (Exception e){
-                    System.out.print(e.getMessage());}
-             try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyectomigracion", "root", "");
-            PreparedStatement pst = cn.prepareStatement("insert into datospasaporte values(?,?,?,?,?)"); 
-            pst.setString(1, "0");
-            pst.setString(2, noIdentificacion.getText().trim());
-            pst.setString(3, tTramite.trim());
-            pst.setString(4, tPasaporte.trim());
-            pst.setString(5, tCaso.trim());
-            pst.executeUpdate();
-                }catch (Exception e){
-                    System.out.print(e.getMessage());}
-            }else{
-            JOptionPane.showMessageDialog(null, "Correos no coinciden");
-        }
-            
-        }else{
-            JOptionPane.showMessageDialog(null, "No pueden haber campos vacios");   
+                try {
+                    Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyectomigracion", "root", "");
+                    PreparedStatement pst = cn.prepareStatement("insert into datospersonales values(?,?,?,?,?,?,?,?,?,?,?,?)");
+                    pst.setString(1, noIdentificacion.getText().trim());
+                    pst.setString(2, nomCorreo.getText().trim());
+                    pst.setString(3, numTelefono.getText().trim());
+                    pst.setString(4, numCelular.getText().trim());
+                    pst.setString(5, nOcupacion.trim());
+                    pst.setString(6, nomPais.getText().trim());
+                    pst.setString(7, nDepartamento.trim());
+                    pst.setString(8, nomMunicipio.getText().trim());
+                    pst.setString(9, nomDireccion.getText().trim());
+                    pst.setString(10, numAltura.getText().trim());
+                    pst.setString(11, nomTez.getText().trim());
+                    pst.setString(12, nomOjos.getText().trim());
+                    pst.executeUpdate();
+                } catch (Exception e) {
+                    System.out.print(e.getMessage());
+                }
+                try {
+                    Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3307/proyectomigracion", "root", "");
+                    PreparedStatement pst = cn.prepareStatement("insert into datospasaporte values(?,?,?,?,?)");
+                    pst.setString(1, "0");
+                    pst.setString(2, noIdentificacion.getText().trim());
+                    pst.setString(3, tTramite.trim());
+                    pst.setString(4, tPasaporte.trim());
+                    pst.setString(5, tCaso.trim());
+                    pst.executeUpdate();
+                } catch (Exception e) {
+                    System.out.print(e.getMessage());
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Correos no coinciden");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No pueden haber campos vacios");
         }
     }//GEN-LAST:event_aceptarActionPerformed
 

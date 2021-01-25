@@ -30,3 +30,24 @@ tipoPasaporte varchar(11) not null,
 tipoCaso varchar(15) not null,
 foreign key (noIdentificacion) references datospersonales(noIdentificacion) 
 )ENGINE=INNODB default CHARSET=LATIN1;
+
+CREATE TABLE citas (
+  id_citas int(11) not null auto_increment,
+  recibo_citas varchar(50) not null,
+  boleta_citas varchar(50) not null,
+  nombre_citas varchar(50) not null,
+  apellido_citas varchar(50) not null,
+  dpi_citas varchar(50) not null,
+  primary key (id_citas)
+) ENGINE=INNODB default CHARSET=LATIN1;
+
+CREATE TABLE agendar (
+  id_agendar int(11) not null auto_increment,
+  pais_agendar varchar(50) not null,
+  departamento_agendar varchar(50) not null,
+  municipio_agendar varchar(50) not null,
+  centro_agendar varchar(50) not null,
+  fecha varchar(50) not null,
+  horario varchar(50) not null,
+  primary key (id_agendar)
+) ENGINE=INNODB default CHARSET=LATIN1;
