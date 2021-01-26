@@ -119,7 +119,7 @@ public class Registro_De_Boleta extends javax.swing.JFrame {
  String comprobante="", ccomprobante=jTextField2.getText(), boleta="", cboleta=jTextField2.getText(), estado="", cestado="0";
         if (jTextField1.getText().length()!=0) {
             try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyectomigracion", "root", "");//Conecta con la base de datos nomina
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3307/proyectomigracion", "root", "");//Conecta con la base de datos nomina
             PreparedStatement pst = cn.prepareStatement("select * from banco where noBoleta = ?");//Busca la variable noBoleta en la tabla de la base de datos
             pst.setString(1, jTextField1.getText().trim());
             ResultSet rs = pst.executeQuery();           

@@ -51,3 +51,11 @@ CREATE TABLE agendar (
   horario varchar(50) not null,
   primary key (id_agendar)
 ) ENGINE=INNODB default CHARSET=LATIN1;
+CREATE TABLE Renap (
+  DPI int(13) primary key not null,
+ NombreC varchar(50) not null,
+ FechaDnacimiento varchar(30)not null,
+ nacionalidad varchar(45) not null,
+ EstadoCiil varchar(45) not null,
+ sexo varchar(25) not null
+) ENGINE=INNODB default CHARSET=LATIN1;
