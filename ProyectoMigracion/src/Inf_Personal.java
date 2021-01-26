@@ -21,7 +21,18 @@ public class Inf_Personal extends javax.swing.JFrame {
      */
     public Inf_Personal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
+        public static String texto = "";
+    public static String texto1 = "";
+    public static String texto2 = "";
+    public static String texto3 = "";
+    public static String texto4 = "";
+    public static String texto5 = "";
+    public static String texto6 = "";
+    public static String texto7 = "";
+    public static String texto8 = "";
+    public static String texto9 = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -297,6 +308,19 @@ public class Inf_Personal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+         String mmDepartamento="",mmOcupacion="";
+        mmDepartamento=nomDepartamento.getSelectedItem().toString();
+    mmOcupacion=nomOcupacion.getSelectedItem().toString();
+        texto = nomCorreo.getText();
+    texto1 = nomPais.getText();
+    texto2 = mmDepartamento;
+    texto3 = nomMunicipio.getText();
+    texto4 = nomDireccion.getText();
+    texto5 = numCelular.getText();
+    texto6 = numAltura.getText();
+    texto7 = nomOjos.getText();
+    texto8 = nomTez.getText();
+    texto9 = mmOcupacion;
         String nDepartamento = "", nOcupacion = "";
         String tTramite = "", tPasaporte = "", tCaso = "";
         tTramite = nomTramite.getSelectedItem().toString();
@@ -338,6 +362,9 @@ public class Inf_Personal extends javax.swing.JFrame {
                     pst.setString(4, tPasaporte.trim());
                     pst.setString(5, tCaso.trim());
                     pst.executeUpdate();
+                                Verificacion_Inf_Personal ventana = new Verificacion_Inf_Personal();
+            ventana.setVisible(true);
+                        this.setVisible(false);
                 } catch (Exception e) {
                     System.out.print(e.getMessage());
                 }
