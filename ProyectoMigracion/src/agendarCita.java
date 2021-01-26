@@ -259,7 +259,7 @@ public class agendarCita extends javax.swing.JFrame {
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
 
         try {
-            String nuevaFecha, anioBD, mesBD, diaBD, horarioBD = null, horarioBD2;
+            String nuevaFecha, anioBD, mesBD, diaBD, horarioBD, horarioBD2;
             String anioBD2, mesBD2, diaBD2, anioBD3, mesBD3, diaBD3, horarioBD3;
 
             Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
@@ -267,23 +267,29 @@ public class agendarCita extends javax.swing.JFrame {
 
             Connection cn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
             PreparedStatement pst2 = cn2.prepareStatement("select * from agendar where pais_agendar = ?");
+            
+            Connection cn3 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
+            PreparedStatement pst3 = cn3.prepareStatement("select * from agendar where horario = ?");
 
             //Buscar si se repite
             pst2.setString(1, txtPais.getText().trim());
+            pst3.setString(1, cbxHorario.getSelectedItem().toString());
 
             ResultSet rs = pst2.executeQuery();
+            ResultSet rs2 = pst3.executeQuery();
 
-            if (rs.next()) {
+            if (rs.next() && rs2.next()) {
                 nuevaFecha = rs.getString("fecha");
                 anioBD = nuevaFecha.split("-")[0];
                 mesBD = nuevaFecha.split("-")[1];
                 diaBD = nuevaFecha.split("-")[2];
+                
                 jlbDia.setText(diaBD);
                 jlbMes.setText(mesBD);
                 jlbAño.setText(anioBD);
-                horarioBD = rs.getString("horario");
+                
+                horarioBD = rs2.getString("horario");
                 jlbHorario.setText(horarioBD);
-
             }
 
             anioBD2 = cbxAño.getSelectedItem().toString();
@@ -294,9 +300,10 @@ public class agendarCita extends javax.swing.JFrame {
             anioBD3 = jlbAño.getText();
             mesBD3 = jlbMes.getText();
             diaBD3 = jlbDia.getText();
+            horarioBD3 = jlbHorario.getText();
 
             if (anioBD2.equals(anioBD3) && mesBD2.equals(mesBD3)
-                    && diaBD2.equals(diaBD3) && horarioBD.equals(horarioBD2)) {
+                    && diaBD2.equals(diaBD3) && horarioBD2.equals(horarioBD3)) {
                 JOptionPane.showMessageDialog(null, "Lo sentimos, el horario o dia que has elegido no se encuentra disponible");
             } else {
                 pst.setString(1, "0");
