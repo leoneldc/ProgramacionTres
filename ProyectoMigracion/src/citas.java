@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class citas extends javax.swing.JFrame {
 
     private static Connection con;
-    private static final String url = "jdbc:mysql://localhost:3307/ProyectoMigracion";
+    private static final String url = "jdbc:mysql://localhost:3306/ProyectoMigracion";
     private static final String driver = "com.mysql.jdbc.Driver";
     private static final String user = "root";
     private static final String pass = "";
@@ -41,16 +41,17 @@ public class citas extends javax.swing.JFrame {
         txtNombre.setText("");
         txtApellido.setText("");
         txtDpi.setText("");
-        jLabelUno.setText("");
-        jLabel7.setText("");
+        jlbBoleta.setText("");
+        jlbComprobante.setText("");
         jLabel8.setText("");
     }
 
     public citas() {
         initComponents();
-        jLabelUno.setVisible(false);
-        jLabel7.setVisible(false);
+        jlbBoleta.setVisible(false);
+        jlbComprobante.setVisible(false);
         jLabel8.setVisible(false);
+        jlbDpi.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -68,10 +69,10 @@ public class citas extends javax.swing.JFrame {
         txtApellido = new javax.swing.JTextField();
         txtDpi = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jLabelUno = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jlbBoleta = new javax.swing.JLabel();
+        jlbComprobante = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jlabelDpi = new javax.swing.JLabel();
+        jlbDpi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,13 +93,13 @@ public class citas extends javax.swing.JFrame {
             }
         });
 
-        jLabelUno.setText(".");
+        jlbBoleta.setText(".");
 
-        jLabel7.setText(".");
+        jlbComprobante.setText(".");
 
         jLabel8.setText(".");
 
-        jlabelDpi.setText(".");
+        jlbDpi.setText(".");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,12 +118,12 @@ public class citas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabelUno)
+                            .addComponent(jlbComprobante)
+                            .addComponent(jlbBoleta)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jlabelDpi)))))
+                                .addComponent(jlbDpi)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
@@ -158,14 +159,14 @@ public class citas extends javax.swing.JFrame {
                     .addComponent(txtDpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelUno)
+                    .addComponent(jlbBoleta)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(jlbComprobante)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jlabelDpi))
+                    .addComponent(jlbDpi))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -175,7 +176,8 @@ public class citas extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
-            String recib, bolet, recib2, bolet2, dpi1, dpi2;
+            String recibo1, boleta1, dpi1;
+            String recibo2, boleta2, dpi2;
 
             Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
             PreparedStatement pst = cn.prepareStatement("insert into citas values(?,?,?,?,?,?)");
@@ -184,7 +186,7 @@ public class citas extends javax.swing.JFrame {
             PreparedStatement pst2 = cn2.prepareStatement("select * from banco where noBoleta = ?");
 
             Connection cn3 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
-            PreparedStatement pst3 = cn3.prepareStatement("select * from datospersonales where noIdentificacion = ?");
+            PreparedStatement pst3 = cn3.prepareStatement("select * from Renap where DPI = ?");
 
             //verifico si el recibo y boleta son los mismos de la BD banco
             pst2.setString(1, txtBoleta.getText().trim());
@@ -194,22 +196,23 @@ public class citas extends javax.swing.JFrame {
             ResultSet rs2 = pst3.executeQuery();
 
             if (rs.next() && rs2.next()) {
-                jLabelUno.setText(rs.getString("noBoleta"));
-                jLabel7.setText(rs.getString("noComprobante"));
-                jlabelDpi.setText(rs2.getString("noIdentificacion"));
+                jlbBoleta.setText(rs.getString("noBoleta"));
+                jlbComprobante.setText(rs.getString("noComprobante"));
+                jlbDpi.setText(rs2.getString("DPI"));
             }
 
-            bolet = txtBoleta.getText();
-            recib = txtRecibo.getText();
+            boleta1 = txtBoleta.getText();
+            recibo1 = txtRecibo.getText();
             dpi1 = txtDpi.getText();
-            bolet2 = jLabelUno.getText();
-            recib2 = jLabel7.getText();
-            dpi2 = jlabelDpi.getText();
+
+            boleta2 = jlbBoleta.getText();
+            recibo2 = jlbComprobante.getText();
+            dpi2 = jlbDpi.getText();
 
             if (txtBoleta.getText().length() != 0 && txtRecibo.getText().length() != 0
                     && txtNombre.getText().length() != 0 && txtApellido.getText().length() != 0
                     && txtDpi.getText().length() != 0) {
-                if (recib.equals(recib2) && bolet.equals(bolet2) && dpi1.equals(dpi2)) {
+                if (recibo1.equals(recibo2) && boleta1.equals(boleta2) && dpi1.equals(dpi2)) {
                     pst.setString(1, "0");
                     pst.setString(2, txtBoleta.getText().trim());
                     pst.setString(3, txtRecibo.getText().trim());
@@ -218,7 +221,6 @@ public class citas extends javax.swing.JFrame {
                     pst.setString(6, txtDpi.getText().trim());
                     pst.executeUpdate();
                     limpiar();
-
                     agendarCita agendar = new agendarCita();
                     agendar.setVisible(true);
                     this.dispose();
@@ -231,6 +233,7 @@ public class citas extends javax.swing.JFrame {
 
         } catch (Exception e) {
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -275,10 +278,10 @@ public class citas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabelUno;
-    private javax.swing.JLabel jlabelDpi;
+    private javax.swing.JLabel jlbBoleta;
+    private javax.swing.JLabel jlbComprobante;
+    private javax.swing.JLabel jlbDpi;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBoleta;
     private javax.swing.JTextField txtDpi;

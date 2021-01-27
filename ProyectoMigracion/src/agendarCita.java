@@ -252,8 +252,9 @@ public class agendarCita extends javax.swing.JFrame {
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
 
         try {
-            String nuevaFecha, anioBD, mesBD, diaBD, horarioBD, horarioBD2;
-            String anioBD2, mesBD2, diaBD2, anioBD3, mesBD3, diaBD3, horarioBD3;
+            String nuevaFecha, anioBD, mesBD, diaBD, horarioBD;
+            String anioBD2, mesBD2, diaBD2, horarioBD2;
+            String anioBD3, mesBD3, diaBD3, horarioBD3;
             String conDepartamento, conMunicipio, conCentro, conDia, conMes;
             String conAnio, conHorario;
 
@@ -287,16 +288,19 @@ public class agendarCita extends javax.swing.JFrame {
                 jlbHorario.setText(horarioBD);
             }
 
+            //Capturo los valores para luego compararlos
             anioBD2 = cbxAño.getSelectedItem().toString();
             mesBD2 = cbxMes.getSelectedItem().toString();
             diaBD2 = cbxDia.getSelectedItem().toString();
             horarioBD2 = cbxHorario.getSelectedItem().toString();
 
+            //Capturo en variables los datos de la Base de datos
             anioBD3 = jlbAño.getText();
             mesBD3 = jlbMes.getText();
             diaBD3 = jlbDia.getText();
             horarioBD3 = jlbHorario.getText();
 
+            //Capturo los valores para luego validar que no esten vacios
             conDepartamento = cbxDepartamento.getSelectedItem().toString();
             conMunicipio = txtMunicipio.getText();
             conCentro = cbxCentro.getSelectedItem().toString();
@@ -325,6 +329,8 @@ public class agendarCita extends javax.swing.JFrame {
                     pst.setString(7, cbxHorario.getSelectedItem().toString());
                     pst.executeUpdate();
                     limpiar();
+                    JOptionPane.showMessageDialog(null, "Su cita a sido agendada.");
+                    this.dispose();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Todos los campos tienen que estar llenos.");
