@@ -364,7 +364,7 @@ public class Inf_Personal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-
+int paso1=0;
         String mmDepartamento = "", mmOcupacion = "";
         mmDepartamento = nomDepartamento.getSelectedItem().toString();
         mmOcupacion = nomOcupacion.getSelectedItem().toString();
@@ -410,7 +410,7 @@ public class Inf_Personal extends javax.swing.JFrame {
                         gnacionalidad = nacionalidad.getText();
                         gdpi = noIdentificacion.getText();
                         gsexo = sexo.getText();
-
+                        paso1=1;
                         NombreC.setText("");
                         FechaDnacimiento.setText("");
                         nacionalidad.setText("");
@@ -424,6 +424,7 @@ public class Inf_Personal extends javax.swing.JFrame {
                 } catch (Exception e) {
                     System.out.print(e.getMessage());
                 }
+                if (paso1==1) {
                 try {
                     Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyectomigracion", "root", "");
                     PreparedStatement pst = cn.prepareStatement("insert into datospersonales values(?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -457,7 +458,9 @@ public class Inf_Personal extends javax.swing.JFrame {
                     this.setVisible(false);
                 } catch (Exception e) {
                     System.out.print(e.getMessage());
+                }    
                 }
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Correos no coinciden");
             }
