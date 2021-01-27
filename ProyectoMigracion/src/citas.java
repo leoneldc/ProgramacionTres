@@ -177,13 +177,13 @@ public class citas extends javax.swing.JFrame {
         try {
             String recib, bolet, recib2, bolet2, dpi1, dpi2;
 
-            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
             PreparedStatement pst = cn.prepareStatement("insert into citas values(?,?,?,?,?,?)");
 
-            Connection cn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
+            Connection cn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
             PreparedStatement pst2 = cn2.prepareStatement("select * from banco where noBoleta = ?");
 
-            Connection cn3 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
+            Connection cn3 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
             PreparedStatement pst3 = cn3.prepareStatement("select * from datospersonales where noIdentificacion = ?");
 
             //verifico si el recibo y boleta son los mismos de la BD banco
