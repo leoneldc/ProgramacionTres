@@ -58,21 +58,23 @@
                                   <Component id="mDep" alignment="0" max="32767" attributes="0"/>
                                   <Component id="mPais" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="Cancelar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel19" max="32767" attributes="0"/>
+                          <Component id="Fechadenacimiento" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jLabel23" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel22" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel21" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel20" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="Sexo" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="EstadoCivil" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="Nacionalidad" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="DPI" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="mCorreo" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="321" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="315" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -80,7 +82,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel18" max="32767" attributes="0"/>
+                          <Component id="nombrec" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jLabel1" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
                   </Group>
@@ -97,32 +99,32 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nombrec" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Fechadenacimiento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="DPI" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Nacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="EstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Sexo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -174,6 +176,7 @@
                   <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="mOcupa" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -317,32 +320,32 @@
         <Property name="text" type="java.lang.String" value="Ocupaci&#xf3;n :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel18">
+    <Component class="javax.swing.JLabel" name="nombrec">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel18"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel19">
+    <Component class="javax.swing.JLabel" name="Fechadenacimiento">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel19"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel20">
+    <Component class="javax.swing.JLabel" name="DPI">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel20"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel21">
+    <Component class="javax.swing.JLabel" name="Nacionalidad">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel21"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel22">
+    <Component class="javax.swing.JLabel" name="EstadoCivil">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel22"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel23">
+    <Component class="javax.swing.JLabel" name="Sexo">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel23"/>
       </Properties>
@@ -400,6 +403,11 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="ACEPTAR"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Cancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
     </Component>
   </SubComponents>

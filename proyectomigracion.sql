@@ -35,9 +35,9 @@ nomOjos varchar(10) not null
 create table datospasaporte(
 noPasaporte int(20) auto_increment primary key not null,
 noIdentificacion int(14) not null,
-tipoTramite varchar(15) not null,
-tipoPasaporte varchar(11) not null,
-tipoCaso varchar(15) not null,
+tipoTramite varchar(90) not null,
+tipoPasaporte varchar(90) not null,
+tipoCaso varchar(90) not null,
 foreign key (noIdentificacion) references datospersonales(noIdentificacion) 
 )ENGINE=INNODB default CHARSET=LATIN1;
 

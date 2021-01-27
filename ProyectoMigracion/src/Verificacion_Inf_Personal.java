@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,7 +7,7 @@
 
 /**
  *
- * @author leelu
+ * @author Gerson y lee
  */
 public class Verificacion_Inf_Personal extends javax.swing.JFrame {
 
@@ -14,6 +15,7 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
      * Creates new form Verificacion_Inf_Personal
      */
     public Verificacion_Inf_Personal() {
+        
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -28,6 +30,12 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
                 mOjos.setText(ventana.texto7);
                 mTez.setText(ventana.texto8);
                 mOcupa.setText(ventana.texto9);
+                nombrec.setText(ventana.gnombrec);
+                Fechadenacimiento.setText(ventana.gfechaDnacimiento);
+                Nacionalidad.setText(ventana.gnacionalidad);
+                EstadoCivil.setText(ventana.gEstadoCiil);
+                Sexo.setText(ventana.gsexo);
+                DPI.setText(ventana.gdpi);
     }
 
     /**
@@ -56,12 +64,12 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        nombrec = new javax.swing.JLabel();
+        Fechadenacimiento = new javax.swing.JLabel();
+        DPI = new javax.swing.JLabel();
+        Nacionalidad = new javax.swing.JLabel();
+        EstadoCivil = new javax.swing.JLabel();
+        Sexo = new javax.swing.JLabel();
         mPais = new javax.swing.JLabel();
         mDep = new javax.swing.JLabel();
         mMun = new javax.swing.JLabel();
@@ -73,6 +81,7 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
         mTez = new javax.swing.JLabel();
         mOcupa = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,17 +136,17 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setText("Ocupación :");
 
-        jLabel18.setText("jLabel18");
+        nombrec.setText("jLabel18");
 
-        jLabel19.setText("jLabel19");
+        Fechadenacimiento.setText("jLabel19");
 
-        jLabel20.setText("jLabel20");
+        DPI.setText("jLabel20");
 
-        jLabel21.setText("jLabel21");
+        Nacionalidad.setText("jLabel21");
 
-        jLabel22.setText("jLabel22");
+        EstadoCivil.setText("jLabel22");
 
-        jLabel23.setText("jLabel23");
+        Sexo.setText("jLabel23");
 
         mPais.setText("jLabel24");
 
@@ -160,6 +169,8 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
         mOcupa.setText("jLabel33");
 
         jButton1.setText("ACEPTAR");
+
+        Cancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,23 +209,25 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
                                     .addComponent(mMun, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(mDep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(mPais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Cancelar)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton1))
-                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Fechadenacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(Sexo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(EstadoCivil, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Nacionalidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(DPI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(mCorreo))
-                                .addGap(0, 321, Short.MAX_VALUE))))
+                                .addGap(0, 315, Short.MAX_VALUE))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addGap(18, 18, 18)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(nombrec, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -226,27 +239,27 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel18))
+                    .addComponent(nombrec))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel19))
+                    .addComponent(Fechadenacimiento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel20))
+                    .addComponent(DPI))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel21))
+                    .addComponent(Nacionalidad))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel22))
+                    .addComponent(EstadoCivil))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel23))
+                    .addComponent(Sexo))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -287,7 +300,8 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(mOcupa)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(Cancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -330,6 +344,12 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancelar;
+    private javax.swing.JLabel DPI;
+    private javax.swing.JLabel EstadoCivil;
+    private javax.swing.JLabel Fechadenacimiento;
+    private javax.swing.JLabel Nacionalidad;
+    private javax.swing.JLabel Sexo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -340,13 +360,7 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -364,5 +378,6 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
     private javax.swing.JLabel mOjos;
     private javax.swing.JLabel mPais;
     private javax.swing.JLabel mTez;
+    private javax.swing.JLabel nombrec;
     // End of variables declaration//GEN-END:variables
 }
