@@ -23,7 +23,7 @@ public class Inf_Personal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-        public static String texto = "";
+    public static String texto = "";
     public static String texto1 = "";
     public static String texto2 = "";
     public static String texto3 = "";
@@ -36,9 +36,9 @@ public class Inf_Personal extends javax.swing.JFrame {
     public static String gnombrec = "";
     public static String gnacionalidad = "";
     public static String gEstadoCiil = "";
-    public static String gsexo="";
-    public static String gfechaDnacimiento="";
-    public static String gdpi="";
+    public static String gsexo = "";
+    public static String gfechaDnacimiento = "";
+    public static String gdpi = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -364,20 +364,20 @@ public class Inf_Personal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-         
-        String mmDepartamento="",mmOcupacion="";
-        mmDepartamento=nomDepartamento.getSelectedItem().toString();
-    mmOcupacion=nomOcupacion.getSelectedItem().toString();
+
+        String mmDepartamento = "", mmOcupacion = "";
+        mmDepartamento = nomDepartamento.getSelectedItem().toString();
+        mmOcupacion = nomOcupacion.getSelectedItem().toString();
         texto = nomCorreo.getText();
-    texto1 = nomPais.getText();
-    texto2 = mmDepartamento;
-    texto3 = nomMunicipio.getText();
-    texto4 = nomDireccion.getText();
-    texto5 = numCelular.getText();
-    texto6 = numAltura.getText();
-    texto7 = nomOjos.getText();
-    texto8 = nomTez.getText();
-    texto9 = mmOcupacion;
+        texto1 = nomPais.getText();
+        texto2 = mmDepartamento;
+        texto3 = nomMunicipio.getText();
+        texto4 = nomDireccion.getText();
+        texto5 = numCelular.getText();
+        texto6 = numAltura.getText();
+        texto7 = nomOjos.getText();
+        texto8 = nomTez.getText();
+        texto9 = mmOcupacion;
         String nDepartamento = "", nOcupacion = "";
         String tTramite = "", tPasaporte = "", tCaso = "";
         tTramite = nomTramite.getSelectedItem().toString();
@@ -392,37 +392,40 @@ public class Inf_Personal extends javax.swing.JFrame {
                 && tPasaporte != "Seleccionar..." && tCaso != "Seleccionar...") {
             if (nomCorreo.getText().equals(nomConfirmacionCorreo.getText())) //para que el correo sea igual    
             {
-                 try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3307/proyectomigracion", "root", "");//Conecta con la base de datos nomina
-            PreparedStatement pst = cn.prepareStatement("select * from Renap where DPI = ?");//Busca la variable noBoleta en la tabla de la base de datos
-            pst.setString(1,noIdentificacion.getText().trim());
-            ResultSet rs = pst.executeQuery();           
-            
-            if(rs.next()){//Captura las variables string y las convertimos a labels
-             NombreC.setText(rs.getString("NombreC"));
-             FechaDnacimiento.setText(rs.getString("FechaDnacimiento"));
-             nacionalidad.setText(rs.getString("nacionalidad"));
-             EstadoCiil.setText(rs.getString("EstadoCiil"));
-             sexo.setText(rs.getString("sexo"));
-             gnombrec=NombreC.getText();
-             gfechaDnacimiento=FechaDnacimiento.getText();
-             gEstadoCiil=EstadoCiil.getText();
-             gnacionalidad=nacionalidad.getText();
-             gdpi=noIdentificacion.getText();
-             gsexo=sexo.getText();
-             
-             NombreC.setText(""); FechaDnacimiento.setText("");nacionalidad.setText("");EstadoCiil.setText("");sexo.setText("");
-             
-            
-            } else {
-            JOptionPane.showMessageDialog(null, "DPI no encontrado.");//Si no lo encuentra envia un mensaje de error
-            noIdentificacion.setText("");
-            }   
-        }catch (Exception e){
-            System.out.print(e.getMessage());
-        }
                 try {
-                    Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3307/proyectomigracion", "root", "");
+                    Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyectomigracion", "root", "");//Conecta con la base de datos nomina
+                    PreparedStatement pst = cn.prepareStatement("select * from Renap where DPI = ?");//Busca la variable noBoleta en la tabla de la base de datos
+                    pst.setString(1, noIdentificacion.getText().trim());
+                    ResultSet rs = pst.executeQuery();
+
+                    if (rs.next()) {//Captura las variables string y las convertimos a labels
+                        NombreC.setText(rs.getString("NombreC"));
+                        FechaDnacimiento.setText(rs.getString("FechaDnacimiento"));
+                        nacionalidad.setText(rs.getString("nacionalidad"));
+                        EstadoCiil.setText(rs.getString("EstadoCiil"));
+                        sexo.setText(rs.getString("sexo"));
+                        gnombrec = NombreC.getText();
+                        gfechaDnacimiento = FechaDnacimiento.getText();
+                        gEstadoCiil = EstadoCiil.getText();
+                        gnacionalidad = nacionalidad.getText();
+                        gdpi = noIdentificacion.getText();
+                        gsexo = sexo.getText();
+
+                        NombreC.setText("");
+                        FechaDnacimiento.setText("");
+                        nacionalidad.setText("");
+                        EstadoCiil.setText("");
+                        sexo.setText("");
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "DPI no encontrado.");//Si no lo encuentra envia un mensaje de error
+                        noIdentificacion.setText("");
+                    }
+                } catch (Exception e) {
+                    System.out.print(e.getMessage());
+                }
+                try {
+                    Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyectomigracion", "root", "");
                     PreparedStatement pst = cn.prepareStatement("insert into datospersonales values(?,?,?,?,?,?,?,?,?,?,?,?)");
                     pst.setString(1, noIdentificacion.getText().trim());
                     pst.setString(2, nomCorreo.getText().trim());
@@ -441,7 +444,7 @@ public class Inf_Personal extends javax.swing.JFrame {
                     System.out.print(e.getMessage());
                 }
                 try {
-                    Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3307/proyectomigracion", "root", "");
+                    Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyectomigracion", "root", "");
                     PreparedStatement pst = cn.prepareStatement("insert into datospasaporte values(?,?,?,?,?)");
                     pst.setString(1, "0");
                     pst.setString(2, noIdentificacion.getText().trim());
@@ -449,9 +452,9 @@ public class Inf_Personal extends javax.swing.JFrame {
                     pst.setString(4, tPasaporte.trim());
                     pst.setString(5, tCaso.trim());
                     pst.executeUpdate();
-                                Verificacion_Inf_Personal ventana = new Verificacion_Inf_Personal();
-            ventana.setVisible(true);
-                        this.setVisible(false);
+                    Verificacion_Inf_Personal ventana = new Verificacion_Inf_Personal();
+                    ventana.setVisible(true);
+                    this.setVisible(false);
                 } catch (Exception e) {
                     System.out.print(e.getMessage());
                 }

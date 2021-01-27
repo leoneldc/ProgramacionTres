@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author leone
@@ -20,10 +19,10 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
-        
-    Image imagen = Toolkit.getDefaultToolkit().getImage("C:logo.png").getScaledInstance(160,145, 0);
-    ImageIcon figura = new ImageIcon(imagen);   
-    foto.setIcon(figura);
+
+        Image imagen = Toolkit.getDefaultToolkit().getImage("C:logo.png").getScaledInstance(160, 145, 0);
+        ImageIcon figura = new ImageIcon(imagen);
+        foto.setIcon(figura);
     }
 
     /**
@@ -100,7 +99,10 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+
+        verCitas  ver_cita= new verCitas();
+        ver_cita.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

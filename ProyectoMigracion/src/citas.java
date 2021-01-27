@@ -39,7 +39,6 @@ public class citas extends javax.swing.JFrame {
         txtBoleta.setText("");
         txtRecibo.setText("");
         txtNombre.setText("");
-        txtApellido.setText("");
         txtDpi.setText("");
         jlbBoleta.setText("");
         jlbComprobante.setText("");
@@ -48,10 +47,15 @@ public class citas extends javax.swing.JFrame {
 
     public citas() {
         initComponents();
+        
         jlbBoleta.setVisible(false);
         jlbComprobante.setVisible(false);
         jLabel8.setVisible(false);
         jlbDpi.setVisible(false);
+        
+        Inf_Personal ventana = new Inf_Personal();
+        txtNombre.setText(ventana.gnombrec);
+        txtDpi.setText(ventana.gdpi);
     }
 
     @SuppressWarnings("unchecked")
@@ -61,12 +65,10 @@ public class citas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtBoleta = new javax.swing.JTextField();
         txtRecibo = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
         txtDpi = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jlbBoleta = new javax.swing.JLabel();
@@ -82,9 +84,11 @@ public class citas extends javax.swing.JFrame {
 
         jLabel3.setText("Nombres:");
 
-        jLabel4.setText("Apellidos:");
-
         jLabel5.setText("DPI:");
+
+        txtNombre.setEditable(false);
+
+        txtDpi.setEditable(false);
 
         jButton1.setText("AGENDAR CITA");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -106,38 +110,33 @@ public class citas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlbComprobante)
+                    .addComponent(jlbBoleta)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlbComprobante)
-                            .addComponent(jlbBoleta)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jlbDpi)))))
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jlbDpi)))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(txtBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRecibo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDpi, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,27 +146,25 @@ public class citas extends javax.swing.JFrame {
                     .addComponent(txtRecibo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtDpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlbBoleta)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlbComprobante)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jlbDpi))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlbBoleta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlbComprobante)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jlbDpi)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtDpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addGap(55, 55, 55))
         );
 
         pack();
@@ -180,7 +177,7 @@ public class citas extends javax.swing.JFrame {
             String recibo2, boleta2, dpi2;
 
             Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
-            PreparedStatement pst = cn.prepareStatement("insert into citas values(?,?,?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into citas values(?,?,?,?,?)");
 
             Connection cn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
             PreparedStatement pst2 = cn2.prepareStatement("select * from banco where noBoleta = ?");
@@ -210,20 +207,18 @@ public class citas extends javax.swing.JFrame {
             dpi2 = jlbDpi.getText();
 
             if (txtBoleta.getText().length() != 0 && txtRecibo.getText().length() != 0
-                    && txtNombre.getText().length() != 0 && txtApellido.getText().length() != 0
-                    && txtDpi.getText().length() != 0) {
+                    && txtNombre.getText().length() != 0 && txtDpi.getText().length() != 0) {
                 if (recibo1.equals(recibo2) && boleta1.equals(boleta2) && dpi1.equals(dpi2)) {
                     pst.setString(1, "0");
                     pst.setString(2, txtBoleta.getText().trim());
                     pst.setString(3, txtRecibo.getText().trim());
                     pst.setString(4, txtNombre.getText().trim());
-                    pst.setString(5, txtApellido.getText().trim());
-                    pst.setString(6, txtDpi.getText().trim());
+                    pst.setString(5, txtDpi.getText().trim());
                     pst.executeUpdate();
                     limpiar();
                     agendarCita agendar = new agendarCita();
                     agendar.setVisible(true);
-                    this.dispose();
+                    this.setVisible(false);
                 } else {
                     JOptionPane.showMessageDialog(null, "Verifique que los datos ingresados sean los correctos.");
                 }
@@ -276,13 +271,11 @@ public class citas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jlbBoleta;
     private javax.swing.JLabel jlbComprobante;
     private javax.swing.JLabel jlbDpi;
-    private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBoleta;
     private javax.swing.JTextField txtDpi;
     private javax.swing.JTextField txtNombre;

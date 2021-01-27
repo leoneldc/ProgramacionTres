@@ -4,7 +4,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Gerson y lee
@@ -15,27 +14,27 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
      * Creates new form Verificacion_Inf_Personal
      */
     public Verificacion_Inf_Personal() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
         Inf_Personal ventana = new Inf_Personal();
         mCorreo.setText(ventana.texto);
         mPais.setText(ventana.texto1);
         mDep.setText(ventana.texto2);
-                mMun.setText(ventana.texto3);
-                mDire.setText(ventana.texto4);
-                mCel.setText(ventana.texto5);
-                mAlt.setText(ventana.texto6);
-                mOjos.setText(ventana.texto7);
-                mTez.setText(ventana.texto8);
-                mOcupa.setText(ventana.texto9);
-                nombrec.setText(ventana.gnombrec);
-                Fechadenacimiento.setText(ventana.gfechaDnacimiento);
-                Nacionalidad.setText(ventana.gnacionalidad);
-                EstadoCivil.setText(ventana.gEstadoCiil);
-                Sexo.setText(ventana.gsexo);
-                DPI.setText(ventana.gdpi);
+        mMun.setText(ventana.texto3);
+        mDire.setText(ventana.texto4);
+        mCel.setText(ventana.texto5);
+        mAlt.setText(ventana.texto6);
+        mOjos.setText(ventana.texto7);
+        mTez.setText(ventana.texto8);
+        mOcupa.setText(ventana.texto9);
+        nombrec.setText(ventana.gnombrec);
+        Fechadenacimiento.setText(ventana.gfechaDnacimiento);
+        Nacionalidad.setText(ventana.gnacionalidad);
+        EstadoCivil.setText(ventana.gEstadoCiil);
+        Sexo.setText(ventana.gsexo);
+        DPI.setText(ventana.gdpi);
     }
 
     /**
@@ -169,8 +168,18 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
         mOcupa.setText("jLabel33");
 
         jButton1.setText("ACEPTAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -307,6 +316,18 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        citas cita = new citas();
+        cita.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        Inf_Personal infPersonal = new Inf_Personal();
+        infPersonal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
