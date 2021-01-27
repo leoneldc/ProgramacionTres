@@ -46,7 +46,6 @@ CREATE TABLE citas (
   boleta_citas int(10) not null,
   recibo_citas int(10) not null,
   nombre_citas varchar(50) not null,
-  apellido_citas varchar(50) not null,
   dpi_citas int(50) not null,
   foreign key (dpi_citas) references Renap(DPI),
   foreign key (boleta_citas, recibo_citas) references banco(noBoleta, noComprobante)
