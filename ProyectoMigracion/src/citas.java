@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class citas extends javax.swing.JFrame {
 
     private static Connection con;
-    private static final String url = "jdbc:mysql://localhost:3306/ProyectoMigracion";
+    private static final String url = "jdbc:mysql://localhost:3307/ProyectoMigracion";
     private static final String driver = "com.mysql.jdbc.Driver";
     private static final String user = "root";
     private static final String pass = "";
@@ -177,13 +177,13 @@ public class citas extends javax.swing.JFrame {
         try {
             String recib, bolet, recib2, bolet2, dpi1, dpi2;
 
-            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
+            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
             PreparedStatement pst = cn.prepareStatement("insert into citas values(?,?,?,?,?,?)");
 
-            Connection cn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
+            Connection cn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
             PreparedStatement pst2 = cn2.prepareStatement("select * from banco where noBoleta = ?");
-            
-            Connection cn3 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
+
+            Connection cn3 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
             PreparedStatement pst3 = cn3.prepareStatement("select * from datospersonales where noIdentificacion = ?");
 
             //verifico si el recibo y boleta son los mismos de la BD banco
@@ -206,22 +206,29 @@ public class citas extends javax.swing.JFrame {
             recib2 = jLabel7.getText();
             dpi2 = jlabelDpi.getText();
 
-            if (recib.equals(recib2) && bolet.equals(bolet2) && dpi1.equals(dpi2)) {
-                pst.setString(1, "0");
-                pst.setString(2, txtBoleta.getText().trim());
-                pst.setString(3, txtRecibo.getText().trim());
-                pst.setString(4, txtNombre.getText().trim());
-                pst.setString(5, txtApellido.getText().trim());
-                pst.setString(6, txtDpi.getText().trim());
-                pst.executeUpdate();
-                limpiar();
+            if (txtBoleta.getText().length() != 0 && txtRecibo.getText().length() != 0
+                    && txtNombre.getText().length() != 0 && txtApellido.getText().length() != 0
+                    && txtDpi.getText().length() != 0) {
+                if (recib.equals(recib2) && bolet.equals(bolet2) && dpi1.equals(dpi2)) {
+                    pst.setString(1, "0");
+                    pst.setString(2, txtBoleta.getText().trim());
+                    pst.setString(3, txtRecibo.getText().trim());
+                    pst.setString(4, txtNombre.getText().trim());
+                    pst.setString(5, txtApellido.getText().trim());
+                    pst.setString(6, txtDpi.getText().trim());
+                    pst.executeUpdate();
+                    limpiar();
 
-                agendarCita agendar = new agendarCita();
-                agendar.setVisible(true);
-                this.dispose();
+                    agendarCita agendar = new agendarCita();
+                    agendar.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Verifique que los datos ingresados sean los correctos.");
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Verifique que los datos ingresados sean los correctos.");
+                JOptionPane.showMessageDialog(null, "Todos los campos tienen que estar llenos.");
             }
+
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
