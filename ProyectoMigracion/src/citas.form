@@ -29,7 +29,7 @@
                   <Component id="jlbComprobante" min="-2" max="-2" attributes="0"/>
                   <Component id="jlbBoleta" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                      <Component id="jlbEstado" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="jlbDpi" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -74,7 +74,7 @@
                       <Component id="jlbComprobante" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlbEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jlbDpi" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -150,7 +150,7 @@
         <Property name="text" type="java.lang.String" value="."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
+    <Component class="javax.swing.JLabel" name="jlbEstado">
       <Properties>
         <Property name="text" type="java.lang.String" value="."/>
       </Properties>

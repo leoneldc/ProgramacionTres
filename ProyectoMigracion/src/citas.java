@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class citas extends javax.swing.JFrame {
 
     private static Connection con;
-    private static final String url = "jdbc:mysql://localhost:3306/ProyectoMigracion";
+    private static final String url = "jdbc:mysql://localhost:3307/ProyectoMigracion";
     private static final String driver = "com.mysql.jdbc.Driver";
     private static final String user = "root";
     private static final String pass = "";
@@ -42,17 +42,17 @@ public class citas extends javax.swing.JFrame {
         txtDpi.setText("");
         jlbBoleta.setText("");
         jlbComprobante.setText("");
-        jLabel8.setText("");
+        jlbEstado.setText("");
     }
 
     public citas() {
         initComponents();
-        
+
         jlbBoleta.setVisible(false);
         jlbComprobante.setVisible(false);
-        jLabel8.setVisible(false);
+        jlbEstado.setVisible(false);
         jlbDpi.setVisible(false);
-        
+
         Inf_Personal ventana = new Inf_Personal();
         txtNombre.setText(ventana.gnombrec);
         txtDpi.setText(ventana.gdpi);
@@ -73,7 +73,7 @@ public class citas extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jlbBoleta = new javax.swing.JLabel();
         jlbComprobante = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jlbEstado = new javax.swing.JLabel();
         jlbDpi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,7 +101,7 @@ public class citas extends javax.swing.JFrame {
 
         jlbComprobante.setText(".");
 
-        jLabel8.setText(".");
+        jlbEstado.setText(".");
 
         jlbDpi.setText(".");
 
@@ -115,7 +115,7 @@ public class citas extends javax.swing.JFrame {
                     .addComponent(jlbComprobante)
                     .addComponent(jlbBoleta)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(jlbEstado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jlbDpi)))
                 .addGap(38, 38, 38)
@@ -152,7 +152,7 @@ public class citas extends javax.swing.JFrame {
                         .addComponent(jlbComprobante)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
+                            .addComponent(jlbEstado)
                             .addComponent(jlbDpi)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,14 +175,12 @@ public class citas extends javax.swing.JFrame {
         try {
             String recibo1, boleta1, dpi1;
             String recibo2, boleta2, dpi2;
+            int numeroEstado;
 
-            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
-            PreparedStatement pst = cn.prepareStatement("insert into citas values(?,?,?,?,?)");
-
-            Connection cn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
+            Connection cn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
             PreparedStatement pst2 = cn2.prepareStatement("select * from banco where noBoleta = ?");
 
-            Connection cn3 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
+            Connection cn3 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
             PreparedStatement pst3 = cn3.prepareStatement("select * from Renap where DPI = ?");
 
             //verifico si el recibo y boleta son los mismos de la BD banco
@@ -195,6 +193,7 @@ public class citas extends javax.swing.JFrame {
             if (rs.next() && rs2.next()) {
                 jlbBoleta.setText(rs.getString("noBoleta"));
                 jlbComprobante.setText(rs.getString("noComprobante"));
+                jlbEstado.setText(rs.getString("estado"));
                 jlbDpi.setText(rs2.getString("DPI"));
             }
 
@@ -205,23 +204,48 @@ public class citas extends javax.swing.JFrame {
             boleta2 = jlbBoleta.getText();
             recibo2 = jlbComprobante.getText();
             dpi2 = jlbDpi.getText();
+            numeroEstado = Integer.parseInt(jlbEstado.getText());
 
             if (txtBoleta.getText().length() != 0 && txtRecibo.getText().length() != 0
                     && txtNombre.getText().length() != 0 && txtDpi.getText().length() != 0) {
-                if (recibo1.equals(recibo2) && boleta1.equals(boleta2) && dpi1.equals(dpi2)) {
-                    pst.setString(1, "0");
-                    pst.setString(2, txtBoleta.getText().trim());
-                    pst.setString(3, txtRecibo.getText().trim());
-                    pst.setString(4, txtNombre.getText().trim());
-                    pst.setString(5, txtDpi.getText().trim());
-                    pst.executeUpdate();
-                    limpiar();
-                    agendarCita agendar = new agendarCita();
-                    agendar.setVisible(true);
-                    this.setVisible(false);
+                if (numeroEstado == 0) {
+                    if (recibo1.equals(recibo2) && boleta1.equals(boleta2) && dpi1.equals(dpi2)) {
+                        try {
+                            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
+                            PreparedStatement pst = cn.prepareStatement("insert into citas values(?,?,?,?,?)");
+
+                            pst.setString(1, "0");
+                            pst.setString(2, txtBoleta.getText().trim());
+                            pst.setString(3, txtRecibo.getText().trim());
+                            pst.setString(4, txtNombre.getText().trim());
+                            pst.setString(5, txtDpi.getText().trim());
+                            pst.executeUpdate();
+                            limpiar();
+                            agendarCita agendar = new agendarCita();
+                            agendar.setVisible(true);
+                            this.setVisible(false);
+                        } catch (Exception e) {
+                            System.out.print(e.getMessage());
+                        }
+
+                        try {
+                            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
+                            PreparedStatement pst = cn.prepareStatement("update banco set estado =?");
+
+                            pst.setString(1, "1");
+                            pst.executeUpdate();
+                        } catch (Exception e) {
+                            JOptionPane.showMessageDialog(null, "2");
+                            System.out.print(e.getMessage());
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Verifique que los datos ingresados sean los correctos.");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Verifique que los datos ingresados sean los correctos.");
+                    JOptionPane.showMessageDialog(null, "inactivo");
                 }
+
             } else {
                 JOptionPane.showMessageDialog(null, "Todos los campos tienen que estar llenos.");
             }
@@ -272,10 +296,10 @@ public class citas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jlbBoleta;
     private javax.swing.JLabel jlbComprobante;
     private javax.swing.JLabel jlbDpi;
+    private javax.swing.JLabel jlbEstado;
     private javax.swing.JTextField txtBoleta;
     private javax.swing.JTextField txtDpi;
     private javax.swing.JTextField txtNombre;
