@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class citas extends javax.swing.JFrame {
 
     private static Connection con;
-    private static final String url = "jdbc:mysql://localhost:3307/ProyectoMigracion";
+    private static final String url = "jdbc:mysql://localhost:3306/ProyectoMigracion";
     private static final String driver = "com.mysql.jdbc.Driver";
     private static final String user = "root";
     private static final String pass = "";
@@ -177,10 +177,10 @@ public class citas extends javax.swing.JFrame {
             String recibo2, boleta2, dpi2;
             int numeroEstado;
 
-            Connection cn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
+            Connection cn2 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
             PreparedStatement pst2 = cn2.prepareStatement("select * from banco where noBoleta = ?");
 
-            Connection cn3 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
+            Connection cn3 = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
             PreparedStatement pst3 = cn3.prepareStatement("select * from Renap where DPI = ?");
 
             //verifico si el recibo y boleta son los mismos de la BD banco
@@ -211,7 +211,7 @@ public class citas extends javax.swing.JFrame {
                 if (numeroEstado == 0) {
                     if (recibo1.equals(recibo2) && boleta1.equals(boleta2) && dpi1.equals(dpi2)) {
                         try {
-                            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
+                            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
                             PreparedStatement pst = cn.prepareStatement("insert into citas values(?,?,?,?,?)");
 
                             pst.setString(1, "0");
@@ -229,7 +229,7 @@ public class citas extends javax.swing.JFrame {
                         }
 
                         try {
-                            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/ProyectoMigracion", "root", "");
+                            Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ProyectoMigracion", "root", "");
                             PreparedStatement pst = cn.prepareStatement("update banco set estado =?");
 
                             pst.setString(1, "1");
@@ -243,7 +243,7 @@ public class citas extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Verifique que los datos ingresados sean los correctos.");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "inactivo");
+                    JOptionPane.showMessageDialog(null, "La boleta ya ha sido ingresada.");
                 }
 
             } else {
