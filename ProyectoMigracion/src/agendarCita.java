@@ -39,7 +39,7 @@ public class agendarCita extends javax.swing.JFrame {
 
     public void limpiar() {
         //txtPais.setText("");
-        cbxDepartamento.setSelectedIndex(0);
+        txtDepartamento.setText("");
         txtMunicipio.setText("");
         cbxCentro.setSelectedIndex(0);
         cbxDia.setSelectedIndex(0);
@@ -54,6 +54,10 @@ public class agendarCita extends javax.swing.JFrame {
         jlbMes.setVisible(false);
         jlbAño.setVisible(false);
         jlbHorario.setVisible(false);
+        
+        Inf_Personal ventana = new Inf_Personal();
+        txtDepartamento.setText(ventana.texto2);
+        txtMunicipio.setText(ventana.texto3);
     }
 
     /**
@@ -68,7 +72,6 @@ public class agendarCita extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtPais = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        cbxDepartamento = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cbxCentro = new javax.swing.JComboBox<>();
@@ -87,6 +90,7 @@ public class agendarCita extends javax.swing.JFrame {
         jlbAño = new javax.swing.JLabel();
         jlbHorario = new javax.swing.JLabel();
         txtMunicipio = new javax.swing.JTextField();
+        txtDepartamento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,8 +100,6 @@ public class agendarCita extends javax.swing.JFrame {
         txtPais.setText("Guatemala");
 
         jLabel2.setText("Departamento: *");
-
-        cbxDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Alta Verapaz ", "Baja Verapaz", "Chimaltenago", "Chiquimula", "Guatemala", "El Progreso", "Escuintla ", "Huehuetenango", "Izabal", "Jalapa", "Jutiapa", "Petén", "Quetzaltenango", "Quiché", "Retalhuleu", "Sacatepequez", "San Marcos", "Santa Rosa", "Sololá", "Suchitepequez", "Totonicapán", "Zacapa" }));
 
         jLabel3.setText("Municipio: *");
 
@@ -138,6 +140,10 @@ public class agendarCita extends javax.swing.JFrame {
 
         jlbHorario.setText(".");
 
+        txtMunicipio.setEditable(false);
+
+        txtDepartamento.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,16 +178,15 @@ public class agendarCita extends javax.swing.JFrame {
                         .addComponent(jLabel9))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(127, 127, 127)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1)
-                                .addComponent(txtPais)
-                                .addComponent(cbxDepartamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbxCentro, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(txtPais)
+                            .addComponent(cbxCentro, 0, 165, Short.MAX_VALUE)
+                            .addComponent(txtDepartamento)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -204,7 +209,7 @@ public class agendarCita extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbxDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -301,7 +306,7 @@ public class agendarCita extends javax.swing.JFrame {
             horarioBD3 = jlbHorario.getText();
 
             //Capturo los valores para luego validar que no esten vacios
-            conDepartamento = cbxDepartamento.getSelectedItem().toString();
+            conDepartamento = txtDepartamento.getText();
             conMunicipio = txtMunicipio.getText();
             conCentro = cbxCentro.getSelectedItem().toString();
             conDia = cbxDia.getSelectedItem().toString();
@@ -319,7 +324,7 @@ public class agendarCita extends javax.swing.JFrame {
                 } else {
                     pst.setString(1, "0");
                     pst.setString(2, txtPais.getText().trim());
-                    pst.setString(3, cbxDepartamento.getSelectedItem().toString());
+                    pst.setString(3, txtDepartamento.getText().trim());
                     pst.setString(4, txtMunicipio.getText().trim());
                     pst.setString(5, cbxCentro.getSelectedItem().toString());
                     fechaCompleta = cbxAño.getSelectedItem().toString() + "-"
@@ -378,7 +383,6 @@ public class agendarCita extends javax.swing.JFrame {
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JComboBox<String> cbxAño;
     private javax.swing.JComboBox<String> cbxCentro;
-    private javax.swing.JComboBox<String> cbxDepartamento;
     private javax.swing.JComboBox<String> cbxDia;
     private javax.swing.JComboBox<String> cbxHorario;
     private javax.swing.JComboBox<String> cbxMes;
@@ -395,6 +399,7 @@ public class agendarCita extends javax.swing.JFrame {
     private javax.swing.JLabel jlbDia;
     private javax.swing.JLabel jlbHorario;
     private javax.swing.JLabel jlbMes;
+    private javax.swing.JTextField txtDepartamento;
     private javax.swing.JTextField txtMunicipio;
     private javax.swing.JTextField txtPais;
     // End of variables declaration//GEN-END:variables
