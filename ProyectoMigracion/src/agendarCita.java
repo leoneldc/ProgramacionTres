@@ -56,8 +56,8 @@ public class agendarCita extends javax.swing.JFrame {
         jlbHorario.setVisible(false);
         
         Inf_Personal ventana = new Inf_Personal();
-        txtDepartamento.setText(ventana.texto2);
-        txtMunicipio.setText(ventana.texto3);
+        txtDepartamento.setText(ventana.gDep);
+        txtMunicipio.setText(ventana.gMun);
     }
 
     /**

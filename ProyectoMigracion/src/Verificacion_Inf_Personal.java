@@ -19,16 +19,16 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
         Inf_Personal ventana = new Inf_Personal();
-        mCorreo.setText(ventana.texto);
-        mPais.setText(ventana.texto1);
-        mDep.setText(ventana.texto2);
-        mMun.setText(ventana.texto3);
-        mDire.setText(ventana.texto4);
-        mCel.setText(ventana.texto5);
-        mAlt.setText(ventana.texto6);
-        mOjos.setText(ventana.texto7);
-        mTez.setText(ventana.texto8);
-        mOcupa.setText(ventana.texto9);
+        mCorreo.setText(ventana.gCorreo);
+        mPais.setText(ventana.gPais);
+        mDep.setText(ventana.gDep);
+        mMun.setText(ventana.gMun);
+        mDire.setText(ventana.gDir);
+        mCel.setText(ventana.gCel);
+        mAlt.setText(ventana.gAlt);
+        mOjos.setText(ventana.gOjos);
+        mTez.setText(ventana.gTez);
+        mOcupa.setText(ventana.gOcupa);
         nombrec.setText(ventana.gnombrec);
         Fechadenacimiento.setText(ventana.gfechaDnacimiento);
         Nacionalidad.setText(ventana.gnacionalidad);
