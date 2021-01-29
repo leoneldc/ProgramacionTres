@@ -80,7 +80,6 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
         mTez = new javax.swing.JLabel();
         mOcupa = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -174,13 +173,6 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
             }
         });
 
-        Cancelar.setText("Cancelar");
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -227,9 +219,7 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
                                         .addComponent(DPI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(mCorreo))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
-                                    .addComponent(Cancelar)))))
+                                .addComponent(jButton1))))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel2)
@@ -313,9 +303,7 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Cancelar)
-                        .addGap(52, 52, 52))))
+                        .addGap(86, 86, 86))))
         );
 
         pack();
@@ -326,12 +314,6 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
         cita.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        Inf_Personal infPersonal = new Inf_Personal();
-        infPersonal.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,7 +351,6 @@ public class Verificacion_Inf_Personal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Cancelar;
     private javax.swing.JLabel DPI;
     private javax.swing.JLabel EstadoCivil;
     private javax.swing.JLabel Fechadenacimiento;
