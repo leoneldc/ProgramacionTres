@@ -1,8 +1,12 @@
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import static java.time.Clock.system;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /*
@@ -85,7 +89,7 @@ public class Inf_Personal extends javax.swing.JFrame {
         nomPasaporte = new javax.swing.JComboBox<>();
         nomCaso = new javax.swing.JComboBox<>();
         aceptar = new javax.swing.JButton();
-        cancelar = new javax.swing.JButton();
+        btncancelar = new javax.swing.JButton();
         NombreC = new javax.swing.JLabel();
         FechaDnacimiento = new javax.swing.JLabel();
         nacionalidad = new javax.swing.JLabel();
@@ -162,7 +166,12 @@ public class Inf_Personal extends javax.swing.JFrame {
             }
         });
 
-        cancelar.setText("CANCELAR");
+        btncancelar.setText("CANCELAR");
+        btncancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,7 +185,7 @@ public class Inf_Personal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -243,19 +252,19 @@ public class Inf_Personal extends javax.swing.JFrame {
                         .addContainerGap(34, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel16)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(nomTramite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(58, 58, 58))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(63, 63, 63)
-                                .addComponent(EstadoCiil)
-                                .addGap(33, 33, 33)
-                                .addComponent(sexo)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel16)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(63, 63, 63)
+                                        .addComponent(EstadoCiil)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(sexo)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -267,7 +276,6 @@ public class Inf_Personal extends javax.swing.JFrame {
                                     .addComponent(jLabel15))
                                 .addContainerGap(37, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(nacionalidad)
                                 .addGap(66, 66, 66))))))
         );
@@ -353,7 +361,7 @@ public class Inf_Personal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(aceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(btncancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(FechaDnacimiento)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
@@ -474,6 +482,16 @@ int paso1=0;
         // TODO add your handling code here:
     }//GEN-LAST:event_nomCasoActionPerformed
 
+    private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
+        // creador Gerson para cerrar el programa
+       confirmarsalida();
+    }//GEN-LAST:event_btncancelarActionPerformed
+public void confirmarsalida(){
+    int valor=JOptionPane.showConfirmDialog(this,"Estas seguro de cerrar el programa?","Advertencia",JOptionPane.YES_NO_OPTION);
+    if (valor==JOptionPane.YES_OPTION){
+    System.exit(0);
+    }
+}
     /**
      * @param args the command line arguments
      */
@@ -512,7 +530,7 @@ int paso1=0;
     private javax.swing.JLabel FechaDnacimiento;
     private javax.swing.JLabel NombreC;
     private javax.swing.JButton aceptar;
-    private javax.swing.JButton cancelar;
+    private javax.swing.JButton btncancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
