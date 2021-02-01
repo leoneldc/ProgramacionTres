@@ -335,7 +335,7 @@ public class agendarCita extends javax.swing.JFrame {
                     pst.executeUpdate();
                     limpiar();
                     JOptionPane.showMessageDialog(null, "Su cita a sido agendada.");
-                    this.dispose();
+                    System.exit(0);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Todos los campos tienen que estar llenos.");
