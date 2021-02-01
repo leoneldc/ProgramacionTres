@@ -435,19 +435,20 @@ int paso1=0;
                 if (paso1==1) {
                 try {
                     Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyectomigracion", "root", "");
-                    PreparedStatement pst = cn.prepareStatement("insert into datospersonales values(?,?,?,?,?,?,?,?,?,?,?,?)");
-                    pst.setString(1, noIdentificacion.getText().trim());
-                    pst.setString(2, nomCorreo.getText().trim());
-                    pst.setString(3, numTelefono.getText().trim());
-                    pst.setString(4, numCelular.getText().trim());
-                    pst.setString(5, nOcupacion.trim());
-                    pst.setString(6, nomPais.getText().trim());
-                    pst.setString(7, nDepartamento.trim());
-                    pst.setString(8, nomMunicipio.getText().trim());
-                    pst.setString(9, nomDireccion.getText().trim());
-                    pst.setString(10, numAltura.getText().trim());
-                    pst.setString(11, nomTez.getText().trim());
-                    pst.setString(12, nomOjos.getText().trim());
+                    PreparedStatement pst = cn.prepareStatement("insert into datospersonales values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    pst.setString(1, "0");
+                    pst.setString(2, noIdentificacion.getText().trim());
+                    pst.setString(3, nomCorreo.getText().trim());
+                    pst.setString(4, numTelefono.getText().trim());
+                    pst.setString(5, numCelular.getText().trim());
+                    pst.setString(6, nOcupacion.trim());
+                    pst.setString(7, nomPais.getText().trim());
+                    pst.setString(8, nDepartamento.trim());
+                    pst.setString(9, nomMunicipio.getText().trim());
+                    pst.setString(10, nomDireccion.getText().trim());
+                    pst.setString(11, numAltura.getText().trim());
+                    pst.setString(12, nomTez.getText().trim());
+                    pst.setString(13, nomOjos.getText().trim());
                     pst.executeUpdate();
                 } catch (Exception e) {
                     System.out.print(e.getMessage());
